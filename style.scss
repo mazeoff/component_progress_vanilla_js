@@ -1,0 +1,54 @@
+@import 'mixins.scss';
+@import '_variables.scss';
+
+@import './UI/OzonInput/OzonInput.scss';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+body{
+    height: 100vh;
+    background-color: #fff;
+    @include flex-center;
+}
+.progress {
+
+    &-block {
+        @include flex-column-space-around;
+        min-width: 320px;
+        min-height: 568px;
+        // border: 2px dashed $color-ozon-blue;
+    }
+    &-bar {
+        @include flex-center;
+        width: 150px;
+        height: 150px;
+        background: conic-gradient($color-ozon-blue 0deg, $color-ozon-grey 0deg);
+        border-radius: 50%;
+        &::before{
+            content: "";
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: $color-white;
+            border-radius: 50%;
+        }
+    }
+    &-settings {
+        @include flex-column-center;
+        &__item {
+            & .setting-item{
+                
+            }
+        }
+    }
+    &-value{
+
+    }
+}
