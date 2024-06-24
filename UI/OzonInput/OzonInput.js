@@ -10,7 +10,7 @@ export default class OzonInput {
     }
 
     onblur(setProgress) {
-        this.input.onblur = function (e) {
+        this.input.onblur = (e) => {
             if (e.target.value == "") {
                 this.input.value = 0;
             }

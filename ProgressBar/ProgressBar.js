@@ -27,7 +27,6 @@ export default class ProgressBar {
                 this.progress--;
             }
             this.progressDeg = Math.round(this.progress * 3.6);
-            // console.log(this.progressDeg);
 
             this.progressBar.style.background = `conic-gradient(#005bff ${
                 this.progressDeg
