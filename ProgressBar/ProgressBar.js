@@ -14,6 +14,7 @@ export default class ProgressBar {
     setProgress(progress) {
         if (progress >= 0 && progress <= 100) {
             this.progressEndValue = parseInt(progress !== '' ? progress : 0);
+            console.log(this.progressEndValue);
             this.render();
         }
     }
@@ -25,7 +26,8 @@ export default class ProgressBar {
             }else{
                 this.progress--;
             }
-            this.progressDeg = this.progress * 3.6;
+            this.progressDeg = Math.round(this.progress * 3.6);
+            // console.log(this.progressDeg);
 
             this.progressBar.style.background = `conic-gradient(#005bff ${
                 this.progressDeg
