@@ -1,0 +1,97 @@
+input[type="checkbox"] {
+    $width: 65px;
+    $height: 40px;
+    $background-color: #eff3f6;
+    $background-color-checked: #35c759;
+    $background-color-disabled: #eff3f6;
+    $background-color-checked-disabled: lighten(
+        desaturate($background-color-checked, 20%),
+        30%
+    );
+
+    $background-color-dark: #eff3f6;
+    $background-color-dark-checked: #005bff;
+    $background-color-dark-disabled: #eff3f6;
+    $background-color-dark-checked-disabled: darken(
+        desaturate($background-color-checked, 30%),
+        30%
+    );
+
+    $circle-border: 2px;
+
+    /* Add if not using autoprefixer */
+    -webkit-appearance: none;
+    appearance: none;
+    /* For iOS < 15 to remove gradient background */
+    background-color: rgba(0, 0, 0, 0);
+    /* Not removed via appearance */
+    margin: 0;
+    position: relative;
+    -webkit-border-radius: 0;
+    display: inline-block;
+    overflow: hidden;
+    width: $width;
+    height: $height;
+    border-radius: ($height / 2);
+    background-color: $background-color;
+    transition: background-color 250ms;
+
+    @media (prefers-reduced-motion) {
+        transition: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        background-color: $background-color-dark;
+    }
+
+    &:before {
+        position: absolute;
+        top: $circle-border;
+        left: $circle-border;
+        border-radius: ($height / 2);
+        content: "";
+        dispaly: inline-block;
+        width: ($height - ($circle-border * 2));
+        height: ($height - ($circle-border * 2));
+        background-color: white;
+        transition: all 200ms;
+        box-shadow: 0px $circle-border $circle-border 0px rgba(0, 0, 0, 0.2);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+    }
+
+    &:checked {
+        background-color: $background-color-checked;
+
+        @media (prefers-color-scheme: dark) {
+            background-color: $background-color-dark-checked;
+        }
+
+        &:before {
+            left: ($width - $height + $circle-border);
+        }
+    }
+
+    &:disabled {
+        background-color: $background-color-disabled;
+
+        @media (prefers-color-scheme: dark) {
+            background-color: $background-color-dark-disabled;
+        }
+
+        &:before {
+            box-shadow: 0px $circle-border $circle-border 0px rgba(0, 0, 0, 0.1);
+        }
+        &:checked {
+            background-color: $background-color-checked-disabled;
+
+            @media (prefers-color-scheme: dark) {
+                background-color: $background-color-dark-checked-disabled;
+            }
+        }
+    }
+
+    vertical-align: middle;
+}

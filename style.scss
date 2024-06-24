@@ -2,13 +2,14 @@
 @import '_variables.scss';
 
 @import './UI/OzonInput/OzonInput.scss';
+@import './UI/OzonCheckBox/OzonCheckBox.scss';
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Quicksand", sans-serif;
-    font-weight: 800;
+    font-weight: 600;
     font-size: 20px;
 }
 
@@ -41,14 +42,30 @@ body{
         }
     }
     &-settings {
-        @include flex-column-center;
-        &__item {
-            & .setting-item{
-                
+        @include flex-row-center;
+        width: 250px;
+        height: 150px;
+        &__col{
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: space-around;
+            &+&{
+                margin-left: 20px;
             }
         }
-    }
-    &-value{
+        &__row{
 
+        }
+    }
+    &-setting{
+        &__container{
+            display: flex;
+            justify-content: space-around;
+            flex-basis: calc(50% - 100px);
+        }
+        &__value{
+
+        }
     }
 }
