@@ -1,4 +1,4 @@
-import ProgressBar from "./components/ProgressBar/ProgressBar.js";
+import ProgressBar from "./ProgressBar/ProgressBar.js";
 import OzonInput from './UI/OzonInput/OzonInput.js';
 // import { setInputWidth } from './UI/OzonInput/OzonInput.js';
 
@@ -6,12 +6,16 @@ document.addEventListener("DOMContentLoaded", function () {
     // Создание экземпляра блока Progress
     const progressContainer = document.querySelector(".progress-block");
     const progressBar = new ProgressBar(progressContainer);
-    // Установка процента выполнения
-    // progressBar.setProgress(75);
 
     const ozonInput = new OzonInput(progressBar.progressEndValue);
 
+    // Установка процента выполнения
+    progressBar.setProgress(ozonInput.input.value);
+
     ozonInput.input.onblur = function (e) {
+        if(e.target.value == ''){
+            ozonInput.input.value = 0;
+        }
         progressBar.setProgress(e.target.value);
     };
 
