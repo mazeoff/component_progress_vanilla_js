@@ -14,9 +14,15 @@ export default class ProgressBar {
     setProgress(progress) {
         if (progress >= 0 && progress <= 100) {
             this.progressEndValue = parseInt(progress !== '' ? progress : 0);
-            console.log(this.progressEndValue);
             this.render();
         }
+    }
+
+    hideProgress(status){
+        if(status)
+            this.progressBar.style.opacity = '0';
+        else
+            this.progressBar.style.opacity = '1';
     }
 
     render() {

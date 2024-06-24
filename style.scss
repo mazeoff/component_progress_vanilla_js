@@ -32,6 +32,7 @@ body{
         height: 150px;
         background: conic-gradient($color-ozon-blue 0deg, $color-ozon-grey 0deg);
         border-radius: 50%;
+        transition: all ease-in-out 200ms;
         &::before{
             content: "";
             position: absolute;
