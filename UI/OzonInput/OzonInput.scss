@@ -6,4 +6,8 @@
     width: 65px;
     height: 40px;
     text-align: center;
+    &:focus{
+        border-color: #005bff;
+        outline:none;
+    }
 }

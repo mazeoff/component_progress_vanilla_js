@@ -10,10 +10,12 @@ export default class OzonInput {
             if (e.target.value == "") {
                 this.input.value = 0;
             }
-
             this.func(e.target.value);
         };
         this.input.onblur = (e) => {
+            setData(e);
+        };
+        this.input.ontouch = (e) => {
             setData(e);
         };
         this.input.onkeydown = (e) => {
