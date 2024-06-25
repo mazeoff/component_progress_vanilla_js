@@ -1,35 +1,35 @@
 export default class OzonInput {
-    constructor(id) {
+    constructor(id, func) {
         this.input = document.querySelector(`#${id}`);
+        this.func = func;
         this.validateInput();
     }
 
-    change(func){
-        function setData(event){
-            if (event.target.value == "") {
+    onChange(){
+        let setData = (e) => {
+            if (e.target.value == "") {
                 this.input.value = 0;
             }
-            func(event.target.value);
-        }
+
+            this.func(e.target.value);
+        };
+        this.input.onblur = (e) => {
+            setData(e);
+        };
         this.input.onkeydown = (e) => {
             if (e.code == 'Enter') {
                 setData(e);
             }
         };
-        this.input.onblur = (e) => {
-            setData(e);
-        };
-        
     }
 
     validateInput() {
-        const regex = /^\d+$/;
-        this.input.onkeyup = function (e) {
+        this.input.oninput = function (e) {
             let value = e.target.value;
-            if (!regex.test(value) || value > 100) {
-                e.target.value = e.target.value.slice(0, -1);
+            e.target.value = value.replace(/\D/g, '');
+            if (value > 100) {
+                e.target.value = value.slice(0, -1);
             }
-            return value;
         };
     }
 }

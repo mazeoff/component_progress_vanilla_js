@@ -6,7 +6,7 @@ export default class OzonCheckBox {
         this.switchCheckBox(initStatus);
     }
 
-    change() {
+    onChange() {
         this.checkbox.onchange = () => {
             this.func(this.checkbox.checked);
         };

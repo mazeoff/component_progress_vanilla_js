@@ -8,20 +8,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //ProgressBar
     const progressBar = new ProgressBar(progressContainer, 'ozoninput');
+    const progressBarSetFunc = progressBar.setProgress.bind(progressBar);
     const progressBarHideFunc = progressBar.hideProgress.bind(progressBar);
     const progressBarAnimateFunc = progressBar.animateProgress.bind(progressBar);
 
     //Input
-    const ozonInput = new OzonInput('ozoninput');
-    ozonInput.change(progressBar.setProgress.bind(progressBar));
+    const ozonInput = new OzonInput('ozoninput', progressBarSetFunc);
+    ozonInput.onChange();
 
     //Checkbox Animate
     const ozonCheckBoxAnimate = new OzonCheckBox('ozoncheckbox__animate', false, progressBarAnimateFunc);
-    ozonCheckBoxAnimate.change();
+    ozonCheckBoxAnimate.onChange();
 
     //Checkbox Hide
     const ozonCheckBoxHide = new OzonCheckBox('ozoncheckbox__hide', false, progressBarHideFunc);
-    ozonCheckBoxHide.change();
+    ozonCheckBoxHide.onChange();
 
-    // progressBar.setProgress(100);
+    //Устанавливаем значение
+    progressBar.setProgress(75);
 });

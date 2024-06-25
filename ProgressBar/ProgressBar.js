@@ -5,7 +5,7 @@ export default class ProgressBar {
 		this.progressValueInput = document.querySelector(`#${inputId}`);
         this.progress = 0;
         this.progressDeg = 0;
-		this.progressEndValue = 75;
+		this.progressEndValue = 0;
         this.progressEndValuePrev = 0;
 		this.progressValueSpeed = 5;
         this.intervalId;

@@ -1,10 +1,10 @@
-@import 'mixins.scss';
-@import '_variables.scss';
+@import "mixins.scss";
+@import "_variables.scss";
 
-@import './UI/OzonInput/OzonInput.scss';
-@import './UI/OzonCheckBox/OzonCheckBox.scss';
+@import "./UI/OzonInput/OzonInput.scss";
+@import "./UI/OzonCheckBox/OzonCheckBox.scss";
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -13,26 +13,41 @@
     font-size: 20px;
 }
 
-body{
+body {
     height: 100vh;
     background-color: #fff;
     @include flex-center;
+    overflow: hidden;
 }
 .progress {
-
     &-block {
-        @include flex-column-space-around;
+        @include flex-space-between;
         min-width: 320px;
         min-height: 568px;
+        transition: all ease-in-out 200ms;
+        &__title {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+        }
+        &::before{
+            content: "";
+        }
+        &::after{
+            content: "";            
+        }
     }
     &-bar {
         @include flex-center;
         width: 150px;
         height: 150px;
-        background: conic-gradient($color-ozon-blue 0deg, $color-ozon-grey 0deg);
+        background: conic-gradient(
+            $color-ozon-blue 0deg,
+            $color-ozon-grey 0deg
+        );
         border-radius: 50%;
         transition: all ease-in-out 200ms;
-        &::before{
+        &::before {
             content: "";
             position: absolute;
             width: 120px;
@@ -43,23 +58,37 @@ body{
     }
     &-settings {
         @include flex-row-center;
-        width: 250px;
         height: 150px;
-        &__col{
+        &__col {
             display: flex;
             flex-direction: column;
             height: 100%;
             justify-content: space-around;
-            &+&{
+            & + & {
                 margin-left: 20px;
             }
         }
     }
-    &-setting{
-        &__container{
+    &-setting {
+        &__container {
             display: flex;
             justify-content: space-around;
             flex-basis: calc(50% - 100px);
         }
+    }
+}
+
+@media screen and (orientation: portrait) {
+    .progress-block {
+        flex-direction: column;
+        min-width: 320px;
+        min-height: 568px;
+    }
+}
+@media screen and (orientation: landscape) {
+    .progress-block {
+        flex-direction: row;
+        min-width: 568px;
+        min-height: 320px;
     }
 }
