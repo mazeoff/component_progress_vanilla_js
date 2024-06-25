@@ -1,12 +1,7 @@
 export default class OzonInput {
-    constructor(initInputValue) {
+    constructor(id) {
+        this.input = document.querySelector(`#${id}`);
         this.validateInput();
-        this.input = document.querySelector(".input");
-        this.initInputValue = initInputValue;
-        this.setInput();
-    }
-    setInput() {
-        this.input.value = this.initInputValue;
     }
 
     change(func){
@@ -29,8 +24,7 @@ export default class OzonInput {
 
     validateInput() {
         const regex = /^\d+$/;
-        var input = document.querySelector(".input");
-        input.onkeyup = function (e) {
+        this.input.onkeyup = function (e) {
             let value = e.target.value;
             if (!regex.test(value) || value > 100) {
                 e.target.value = e.target.value.slice(0, -1);

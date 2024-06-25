@@ -6,16 +6,6 @@ export default class OzonCheckBox {
         this.switchCheckBox(initStatus);
     }
 
-
-    onblur(setProgress) {
-        this.input.onblur = (e) => {
-            if (e.target.value == "") {
-                this.input.value = 0;
-            }
-            setProgress(e.target.value);
-        };
-    }
-
     change() {
         this.checkbox.onchange = () => {
             this.func(this.checkbox.checked);

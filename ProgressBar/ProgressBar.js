@@ -1,8 +1,8 @@
 export default class ProgressBar {
-    constructor(container) {
+    constructor(container, inputId) {
         this.container = container;
         this.progressBar = container.querySelector(".progress-bar");
-		this.progressValue = document.querySelector(".progress-value");
+		this.progressValueInput = document.querySelector(`#${inputId}`);
         this.progress = 0;
         this.progressDeg = 0;
 		this.progressEndValue = 75;
@@ -31,7 +31,7 @@ export default class ProgressBar {
             this.intervalId = setInterval(()=>{
                 let randomProgress = Math.round(Math.random() * 101);
                 this.setProgress(randomProgress);
-                this.progressValue.value = randomProgress;
+                this.progressValueInput.value = randomProgress;
             },1000);
 
         }else{
@@ -40,6 +40,7 @@ export default class ProgressBar {
     }
 
     render() {
+        this.progressValueInput.value = this.progressEndValue;
         let timer = setInterval(() => {
             if(this.progressEndValue > this.progress){
                 this.progress++;
