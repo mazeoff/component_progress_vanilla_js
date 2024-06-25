@@ -15,8 +15,9 @@ export default class OzonInput {
         this.input.onblur = (e) => {
             setData(e);
         };
-        this.input.ontouch = (e) => {
+        this.input.ontouchstart = (e) => {
             setData(e);
+            this.blur();
         };
         this.input.onkeydown = (e) => {
             if (e.code == 'Enter') {
