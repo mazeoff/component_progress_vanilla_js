@@ -18,12 +18,15 @@ export default class OzonInput {
         this.input.ontouchstart = (e) => {
             setData(e);
             this.blur();
+            alert('hello World');
         };
         this.input.onkeydown = (e) => {
             if (e.code == 'Enter') {
                 setData(e);
             }
         };
+
+        this.input.addEventListener('touchstart', () => { alert('hello'); this.input.blur();}, false);
     }
 
     validateInput() {
