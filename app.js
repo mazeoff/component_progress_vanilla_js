@@ -14,15 +14,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //Input
     const ozonInput = new OzonInput('ozoninput', progressBarSetFunc);
-    ozonInput.onChange();
 
     //Checkbox Animate
     const ozonCheckBoxAnimate = new OzonCheckBox('ozoncheckbox__animate', false, progressBarAnimateFunc);
-    ozonCheckBoxAnimate.onChange();
 
     //Checkbox Hide
     const ozonCheckBoxHide = new OzonCheckBox('ozoncheckbox__hide', false, progressBarHideFunc);
-    ozonCheckBoxHide.onChange();
 
     //Устанавливаем значение
     progressBar.setProgress(75);

@@ -4,6 +4,7 @@ export default class OzonCheckBox {
         this.checkbox = document.querySelector(`#${id}`);
         this.func = func;
         this.switchCheckBox(initStatus);
+        this.onChange();
     }
 
     onChange() {

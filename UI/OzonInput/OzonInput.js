@@ -3,6 +3,7 @@ export default class OzonInput {
         this.input = document.querySelector(`#${id}`);
         this.func = func;
         this.validateInput();
+        this.onChange();
     }
 
     onChange(){

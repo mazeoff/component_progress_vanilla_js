@@ -32,10 +32,12 @@ export default class ProgressBar {
                 let randomProgress = Math.round(Math.random() * 101);
                 this.setProgress(randomProgress);
                 this.progressValueInput.value = randomProgress;
+                this.progressValueInput.disabled = status;
             },1000);
 
         }else{
             clearInterval(this.intervalId);
+            this.progressValueInput.disabled = status;
         }
     }
 
