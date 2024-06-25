@@ -1,8 +1,9 @@
 export default class OzonCheckBox {
-    constructor(id, initStatus) {
+    constructor(id, initStatus, func) {
         this.id = id;
         this.checkbox = document.querySelector(`#${id}`);
-        this.initStatus = initStatus;
+        this.func = func;
+        this.switchCheckBox(initStatus);
     }
 
 
@@ -15,9 +16,14 @@ export default class OzonCheckBox {
         };
     }
 
-    change(func) {
-        this.checkbox.onchange = (e) => {
-            func(this.checkbox.checked);
+    change() {
+        this.checkbox.onchange = () => {
+            this.func(this.checkbox.checked);
         };
+    }
+
+    switchCheckBox(initStatus){
+        this.checkbox.checked = initStatus;
+        this.func(initStatus);
     }
 }

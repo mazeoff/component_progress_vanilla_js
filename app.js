@@ -3,20 +3,23 @@ import OzonCheckBox from "./UI/OzonCheckBox/OzonCheckBox.js";
 import OzonInput from './UI/OzonInput/OzonInput.js';
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Создание экземпляра блока Progress
+
     const progressContainer = document.querySelector(".progress-block");
-    const progressBar = new ProgressBar(progressContainer);
-
-    const ozonInput = new OzonInput(progressBar.progressEndValue);
-    const ozonCheckBoxHide = new OzonCheckBox('checkbox__hide', true);
-    const ozonCheckBoxAnimate = new OzonCheckBox('checkbox__animate', true);
-
-    ozonCheckBoxHide.change(progressBar.hideProgress.bind(progressBar));
-    ozonCheckBoxAnimate.change();
     
+    //ProgressBar
+    const progressBar = new ProgressBar(progressContainer);
+    const progressBarHideFunc = progressBar.hideProgress.bind(progressBar);
+    const progressBarAnimateFunc = progressBar.animateProgress.bind(progressBar);
 
-    // Установка процента выполнения
-    progressBar.setProgress(ozonInput.input.value);
+    //Input
+    const ozonInput = new OzonInput(progressBar.progressEndValue);
+    ozonInput.change(progressBar.setProgress.bind(progressBar));
 
-    ozonInput.onblur(progressBar.setProgress.bind(progressBar));
+    //Checkbox Animate
+    const ozonCheckBoxAnimate = new OzonCheckBox('checkbox__animate', false, progressBarAnimateFunc);
+    ozonCheckBoxAnimate.change();
+
+    //Checkbox Hide
+    const ozonCheckBoxHide = new OzonCheckBox('checkbox__hide', false, progressBarHideFunc);
+    ozonCheckBoxHide.change();
 });

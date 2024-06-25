@@ -24,7 +24,6 @@ body{
         @include flex-column-space-around;
         min-width: 320px;
         min-height: 568px;
-        // border: 2px dashed $color-ozon-blue;
     }
     &-bar {
         @include flex-center;
@@ -55,18 +54,12 @@ body{
                 margin-left: 20px;
             }
         }
-        &__row{
-
-        }
     }
     &-setting{
         &__container{
             display: flex;
             justify-content: space-around;
             flex-basis: calc(50% - 100px);
-        }
-        &__value{
-
         }
     }
 }

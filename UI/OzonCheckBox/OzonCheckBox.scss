@@ -2,7 +2,7 @@ input[type="checkbox"] {
     $width: 65px;
     $height: 40px;
     $background-color: #eff3f6;
-    $background-color-checked: #35c759;
+    $background-color-checked: #005bff;
     $background-color-disabled: #eff3f6;
     $background-color-checked-disabled: lighten(
         desaturate($background-color-checked, 20%),
@@ -19,12 +19,9 @@ input[type="checkbox"] {
 
     $circle-border: 2px;
 
-    /* Add if not using autoprefixer */
     -webkit-appearance: none;
     appearance: none;
-    /* For iOS < 15 to remove gradient background */
     background-color: rgba(0, 0, 0, 0);
-    /* Not removed via appearance */
     margin: 0;
     position: relative;
     -webkit-border-radius: 0;
@@ -50,7 +47,7 @@ input[type="checkbox"] {
         left: $circle-border;
         border-radius: ($height / 2);
         content: "";
-        dispaly: inline-block;
+        display: inline-block;
         width: ($height - ($circle-border * 2));
         height: ($height - ($circle-border * 2));
         background-color: white;

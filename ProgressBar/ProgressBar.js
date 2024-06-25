@@ -6,14 +6,16 @@ export default class ProgressBar {
         this.progress = 0;
         this.progressDeg = 0;
 		this.progressEndValue = 75;
-        this.progressEndValuePrev;
+        this.progressEndValuePrev = 0;
 		this.progressValueSpeed = 5;
+        this.intervalId;
         this.render();
     }
 
     setProgress(progress) {
-        if (progress >= 0 && progress <= 100) {
-            this.progressEndValue = parseInt(progress !== '' ? progress : 0);
+        progress = parseInt(progress);
+        if ((progress >= 0 && progress <= 100) && progress !== this.progressEndValue) {
+            this.progressEndValue = progress !== '' ? progress : 0;
             this.render();
         }
     }
@@ -23,6 +25,18 @@ export default class ProgressBar {
             this.progressBar.style.opacity = '0';
         else
             this.progressBar.style.opacity = '1';
+    }
+    animateProgress(status){
+        if(status){
+            this.intervalId = setInterval(()=>{
+                let randomProgress = Math.round(Math.random() * 101);
+                this.setProgress(randomProgress);
+                this.progressValue.value = randomProgress;
+            },1000);
+
+        }else{
+            clearInterval(this.intervalId);
+        }
     }
 
     render() {

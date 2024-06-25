@@ -9,13 +9,22 @@ export default class OzonInput {
         this.input.value = this.initInputValue;
     }
 
-    onblur(setProgress) {
-        this.input.onblur = (e) => {
-            if (e.target.value == "") {
+    change(func){
+        function setData(event){
+            if (event.target.value == "") {
                 this.input.value = 0;
             }
-            setProgress(e.target.value);
+            func(event.target.value);
+        }
+        this.input.onkeydown = (e) => {
+            if (e.code == 'Enter') {
+                setData(e);
+            }
         };
+        this.input.onblur = (e) => {
+            setData(e);
+        };
+        
     }
 
     validateInput() {
