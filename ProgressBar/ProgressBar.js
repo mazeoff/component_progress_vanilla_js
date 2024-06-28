@@ -29,7 +29,7 @@ export default class ProgressBar {
     animateProgress(status){
         if(status){
             this.intervalId = setInterval(()=>{
-                let randomProgress = Math.round(Math.random() * 101);
+                let randomProgress = Math.round(Math.random() * 100);
                 this.setProgress(randomProgress);
                 this.progressValueInput.value = randomProgress;
                 this.progressValueInput.disabled = status;
