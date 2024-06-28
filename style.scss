@@ -24,11 +24,12 @@ body {
         @include flex-space-between;
         min-width: 320px;
         min-height: 568px;
+        position: relative;
         transition: all ease-in-out 200ms;
         &__title {
             position: absolute;
-            left: 20px;
-            top: 20px;
+            left: 0;
+            top: 0;
         }
         &::before{
             content: "";
